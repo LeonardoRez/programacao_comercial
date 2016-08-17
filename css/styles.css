@@ -1,1 +1,34 @@
+/* comentário*/
 
+body { /*mudanças aplicadas ao corpo do documento*/
+    background-color: #ff9999;
+}
+
+h1{ /*mudanças aplicadas ao título h1*/
+    color: magenta;
+    text-align: center;
+}
+
+p{ /*mudanças aplicadas a todos os paragrafos*/
+   font-family: verdana;
+   font-size: 20px;
+}
+
+th, td{ /*mudanças aplic*/
+    border-bottom: 1px dashed #ddd;
+}
+
+tr:nth-child(odd) {background-color: #00ff00}
+
+tr:hover {background-color: 0000ff}
+
+#area-mensagens{
+  border: 1px solid #ff0000;
+  padding: 5px 5px 5px 5px;
+}
+
+.destaque{
+    text-transform: uppercase;
+    font-size: 30px;
+    color: #00ff00;
+}

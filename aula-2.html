@@ -1,0 +1,110 @@
+    <head>
+      <meta charset="UTF-8">
+      <title>Aula 2</title>
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+      <script src="js/jquery.js"> </script>
+      <script src="js/bootstrap.js"></script>
+      <script src="js/funcoes.js"></script>
+    </head>
+
+    <body>
+
+      <div>
+          <span class="label label-default">Default</span>
+          <span class="label label-primary">Primary</span>
+          <span class="label label-success">Success</span>
+          <span class="label label-info">Info</span>
+          <span class="label label-warning">Warning</span>
+          <span class="label label-danger">Deu ruim</span>
+      </div>
+
+      <br>
+
+      <div>
+          <a href="#">Você possui <span class="badge"> 42 </span> mensagens não lidas.</a>
+      </div>
+
+      <br>
+
+      <div>
+          <button class="btn btn-primary" type="button"> Mensagens <span class="badge"> 42 </span> </button>
+      </div>
+
+      <br>
+
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1"> <i class="glyphicon glyphicon-play-circle"></i></span>
+          <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+
+      </div>
+
+      <div class="jumbotron mrg-t-ml">
+          <h1>Hello, world!</h1>
+          <p>...</p>
+          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+      </div>
+
+      <br>
+
+      <div class="dropdown mrg-t-ml">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Dropdown
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul
+
+
+      </div>
+
+      <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        Enter a valid email address
+      </div>
+
+      <div class="alert alert-warning alert-dismissible mrg-t-ml" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Warning!</strong> Better check yourself, you're not looking too good.
+      </div>
+
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Panel heading</div>
+        <div class="panel-body">
+          <p>...</p>
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+          ...
+        </table>
+      </div>
+
+      <div class="well"  id="area-01">
+        manipulando a DOM com jquery - Teste 01
+      </div>
+
+      <div class="well"  id="area-02">
+        manipulando a DOM com jquery - Teste 02
+      </div>
+
+      <buttom type="buttom" class="btn btn-info" onclick="minhaFuncao1()">
+        Executar ação 1
+      </buttom>
+
+      <buttom type="buttom" class="btn btn-danger" onclick="minhaFuncao2()">
+        Executar ação 2
+      </buttom>
+
+      <buttom type="buttom" class="btn btn-success" onclick="minhaFuncao3()">
+        Executar ação 3
+      </buttom>
+
+    </body>
+</html>

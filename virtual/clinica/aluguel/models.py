@@ -14,7 +14,7 @@ class Cliente(models.Model):
     rg = models.CharField(max_length=30)
     cpf = models.CharField(max_length=11)
     email = models.CharField(max_length=100)
-    #endereco = Endereco()
+    endereco = Endereco()
     telefone  = models.CharField(max_length=12)
     data_cadastro = models.CharField(max_length=10)
     profissao = models.CharField(max_length=100)
@@ -27,3 +27,9 @@ class Reserva(models.Model):
     periodoHora = models.CharField(max_length=50)
     #preco
     data_pagamento = models.CharField(max_length=10)
+
+class Endereco(models.Model):
+    bairro = models.CharField(max_lenght=30)
+    rua = models.CharField(max_lenght=30)
+    numero = models.CharField(max_lenght=5)
+    cidade = models.CharField(max_lenght=30)

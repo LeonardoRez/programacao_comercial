@@ -1,0 +1,7 @@
+virtual/*
+!virtual/sistema
+!virtual/clinica
+!virtual/tutorial
+!virtual/teste
+
+*.pyc

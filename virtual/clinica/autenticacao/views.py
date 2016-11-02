@@ -5,4 +5,4 @@ from django.http import HttpResponse
 def login(request):
     # return HttpResponse("Tela de login")
     # template = loader.get_template('autenticacao/index.html')
-    return render(render, 'autenticacao/index.html')
+    return render(request, 'autenticacao/index.html', {})

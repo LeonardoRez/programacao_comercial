@@ -39,10 +39,15 @@
   <div class="login-box-body">
     <p class="login-box-msg">Entre com seus dados para acessar o sistema</p>
 
-    <form action="../" method="post">
+    <form action="/login" method="post">
     {% csrf_token %}
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="E-mail" name="login" required="">
+        <!-- {% if sucesso == False %}
+            <input type="text" class="form-control" placeholder="Login" name="login" required="" value={{login}}>
+        {% else %}
+            <input type="text" class="form-control" placeholder="Login" name ="login" required="">
+        {% endif %} -->
+        <input type="text" class="form-control" placeholder="Login" name="login" required="" value={{login}}>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
@@ -73,13 +78,15 @@
 
   </div>
   <!-- /.login-box-body -->
+  {% if sucesso == False %}
+      <br>
+      <div class="alert alert-danger">
+        {{ mensagem }}
+      </div>
+  {% endif %}
 </div>
 <!-- /.login-box -->
-{% if sucesso == False %}
-    <div class="alert alert-danger">
-      {{ mensagem }}
-    </div>
-{% endif %}
+
 <!-- jQuery 2.2.3 -->
 <!-- importando scripts (js) -->
 <script src="{% static "js/jquery-2.2.3.min.js" %}"></script>

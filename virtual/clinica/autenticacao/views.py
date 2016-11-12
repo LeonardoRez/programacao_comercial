@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.views.generic import View
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
@@ -6,7 +7,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class Autenticacao(View):
     def get(self,request):
-        return render(request,'autenticacao/login.html', {})
+        if request.user.is_authenticated():
+            return redirect('index')
+        else:
+            return render(request,'autenticacao/login.html', {})
 
     def post(self,request):
         resposta={
@@ -19,19 +23,25 @@ class Autenticacao(View):
         user = authenticate(username=usuario, password=senha)
         if user:
             login(request, user)
-            return redirect('/', )
+            return redirect('/index', )
         else:
             resposta['mensagem'] = 'Login ou Senha incorreto(s)'
             resposta['login'] = usuario
 
         return render(request, 'autenticacao/login.html', resposta)
 
+class Logout(View):
+    def get(self,request):
+        logout(request)
+        return redirect('login')
+
+
 # def login(request):
-#     # return HttpResponse("Tela de login")
+#     # return HttpRespéonse("Tela de login")
 #     # template = loader.get_template('autenticacao/index.html')
 #     return render(request, 'autenticacao/login.html', {})
 class Index(LoginRequiredMixin,View):
-    login_url='/login'
+    login_url='/'
     def get(self,request):
         dados={
             'nome':'',
@@ -42,6 +52,5 @@ class Index(LoginRequiredMixin,View):
             dados['nome'] = request.user.first_name
             dados['data_cadastro'] = request.user.date_joined.year
         return render(request,'index.html',dados)
-
-def index(request):
-    return render(request,'index.html',{})
+    def logout(self,request):
+        auth_logout(request)

@@ -39,7 +39,7 @@
   <div class="login-box-body">
     <p class="login-box-msg">Entre com seus dados para acessar o sistema</p>
 
-    <form action="/login" method="post">
+    <form action="/" method="post">
     {% csrf_token %}
       <div class="form-group has-feedback">
         <!-- {% if sucesso == False %}
@@ -47,7 +47,7 @@
         {% else %}
             <input type="text" class="form-control" placeholder="Login" name ="login" required="">
         {% endif %} -->
-        <input type="text" class="form-control" placeholder="Login" name="login" required="" value={{login}}>
+        <input type="text" class="form-control" placeholder="Login" name="login" required="" value="{{login}}" autofocus>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">

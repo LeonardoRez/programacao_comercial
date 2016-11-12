@@ -8,7 +8,7 @@ from const import *
 # Create your models here.
 class Gasto(models.Model):
     tipo_gasto = models.IntegerField(choices=TIPO_GASTO, default=11)
-    custo = models.DecimalField(max_digits = 6, decimal_places=2)
+    custo = models.DecimalField(max_digits = 9, decimal_places=2)
     descricao = models.CharField(max_length = 200)
     data = models.DateTimeField(default = datetime.now, blank = True)
 

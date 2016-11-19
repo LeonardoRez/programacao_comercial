@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.views.generic import ListView, CreateView
+from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse_lazy
@@ -9,18 +10,35 @@ from django.utils import timezone
 
 # Create your views here.
 class Gastos(LoginRequiredMixin, ListView):
+    login_url='/'
     model = Gasto
+    form_class = FormularioGasto
     template_name = 'controle_gastos/listar.html'
+    context = {}
 
     def get_context_data(self, **kwargs):
-        context = super(Gastos, self).get_context_data(**kwargs)
-        context['teste'] = timezone.now()
-        context['teste2'] = '\tteste'
-        return context
+        temp = self.context['custo_total']
+        self.context = super(Gastos, self).get_context_data(**kwargs)
+        self.context['titulo'] = 'Lista de Gastos'
+        self.context['custo_total'] = temp
+        self.context['test'] = FormularioGasto()
+        return self.context
 
     def get_queryset(self):
-        queryset = Gasto.objects.filter()
+        mes = 11 # LISTAR GASTOS POR MES. FALTA CRIAR UM SELECT PARA MANDAR O VALOR PARA ESSE 'mes'
+        if mes == '':
+            queryset = Gasto.objects.filter()
+        else:
+            queryset = Gasto.objects.filter(data__month = mes)
+        # qt = Gasto.objects.aggregate(Sum('custo'))
+        qt = 0
+        for i in range(0,len(queryset)):
+            qt += queryset[i].custo
+        self.context['custo_total'] = qt
         return queryset
+
+    def teste(self):
+        print type(Gasto.objects.filter())
 
 
 class NovoGasto(LoginRequiredMixin, CreateView):

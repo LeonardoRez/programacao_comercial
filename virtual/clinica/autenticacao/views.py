@@ -45,13 +45,8 @@ class Index(LoginRequiredMixin,View):
     login_url='/'
     def get(self,request):
         dados={
-            'nome':'',
-            'data_cadastro':'',
             'titulo':'Inicio'
         }
-        if request.user.is_authenticated():
-            dados['nome'] = request.user.first_name
-            dados['data_cadastro'] = request.user.date_joined.year
         return render(request,'index.html',dados)
     def logout(self,request):
         auth_logout(request)

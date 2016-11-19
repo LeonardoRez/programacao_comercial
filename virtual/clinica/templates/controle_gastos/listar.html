@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-    <h1>GASTOS</h1> {{teste}} {{teste2}}
+    <h1>GASTOS</h1>
+
+
 
     <table id="tabela-gastos" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="gastos_info">
         <thead>
             <tr role="row">
                 <th>Tipo</th>
                 <th>Descrição</th>
+                <th>Custo</th>
+                <th>Data</th>
             </tr>
         </thead>
         <tbody>
@@ -15,10 +19,21 @@
                 <tr role="row">
                     <td>{{gasto.get_tipo_gasto_display}}</td>
                     <td>{{gasto.descricao}}</td>
+                    <td>R$ {{gasto.custo}}</td>
+                    <td>{{gasto.data.day}}/{{gasto.data.month}}/{{gasto.data.year}}</td>
                 </tr>
             {% endfor %}
+                <tr>
+                  <td></td><td></td><td>Custo total: R$ {{custo_total}}</td>
+                </tr>
         </tbody>
     </table>
+
+
+    <div class="">
+      <!-- INCLUINDO O HTML QUE GERA O FORM NA PG -->
+      {% include "controle_gastos/qualquer.html" %}
+    </div>
 
 
 

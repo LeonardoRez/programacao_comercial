@@ -3,7 +3,18 @@
 {% block content %}
     <h1>GASTOS</h1>
 
-
+    <div class="">
+        <form class="" action="" method="get">
+            <select class="" name="mes" onchange="this.form.submit()">
+                <option value="0">Escolha um mês</option>
+                {% for key, value in meses %}  <!-- v in meses v = (1, "")-->
+                        {{campo_mes}}
+                        <option {% if key == mes %} selected {% endif %} value="{{key}}">{{value}}</option>
+                {% endfor %}
+            </select>
+            <!-- <input type="text" name="mes" value="{{campo_mes}}"> <input type="submit" class="btn btn-primary " value="Buscar"> -->
+        </form>
+    </div>
 
     <table id="tabela-gastos" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="gastos_info">
         <thead>
@@ -32,7 +43,8 @@
 
     <div class="">
       <!-- INCLUINDO O HTML QUE GERA O FORM NA PG -->
-      {% include "controle_gastos/qualquer.html" %}
+      <h3>Adicionar novo gasto</h3>
+      {% include "controle_gastos/form_novo_gasto.html" %}
     </div>
 
 

@@ -1,15 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+
+
 {% block content %}
     <h1>Novo GASTO</h1>
-
-
-    <!-- {{form.tipo_gasto}} -->
-    <form class="" action="/gastos/novo/" method="post">
-        {% csrf_token %}
-        {{form}}
-        <input type="submit" value="Adicionar">
-    </form>
+    {% include "controle_gastos/form_novo_gasto.html" %}
 
 
 

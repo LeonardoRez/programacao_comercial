@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^', include('autenticacao.urls')),
     url(r'^gastos/', include('controle_gastos.urls')),
     url(r'^index/', views.Index.as_view(), name='index'), # chama a classe Index quando a url eh /
+    url(r'^alugueis/', include('controle_alugueis.urls')),
 ]

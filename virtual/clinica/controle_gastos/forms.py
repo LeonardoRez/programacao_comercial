@@ -28,4 +28,3 @@ class FormularioGasto(forms.ModelForm):
         self.fields['custo'].widget.attrs['class'] = 'form-control has-feedback-left'
         self.fields['data'].widget.attrs['class'] = 'form-control has-feedback-left'
         self.fields['data'].widget.attrs['id'] = 'datepicker'
-        self.fields['data'].widget.attrs['type'] = 'date'

@@ -5,11 +5,15 @@ from django.core.validators import *
 from django.db import models
 
 class Cliente(models.Model):
-    nome = models.CharField(max_length = 50)
+    nome = models.CharField(max_length = 50,
+                            validators = [
+                                    RegexValidator(regex=r'^[a-zA-Z *]+$', message=("Nome invalido"), code='nome_invalido')
+                                    ]
+                            )
     telefone = models.CharField(
                             max_length = 14,
                             validators = [
-                                    RegexValidator(regex=r'^\+?1?\d{9,15}$',
+                                    RegexValidator(regex=r'^\(\d\d\)\d{5}-\d{4}$',
                                         message = ("Numero de telefone invalido"),
                                         code = 'telefone_invalido')
                                     ]

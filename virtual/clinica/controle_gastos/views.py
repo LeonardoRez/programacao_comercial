@@ -31,7 +31,7 @@ class Gastos(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         mes = self.request.GET.get("mes") # LISTAR GASTOS POR MES. FALTA CRIAR UM SELECT PARA MANDAR O VALOR PARA ESSE 'mes'
-        if mes is None:
+        if (mes is None) or (mes == "0"):
             queryset = Gasto.objects.filter()
         else:
             queryset = Gasto.objects.filter(data__month = mes)

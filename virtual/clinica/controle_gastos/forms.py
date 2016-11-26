@@ -28,10 +28,4 @@ class FormularioGasto(forms.ModelForm):
         self.fields['custo'].widget.attrs['class'] = 'form-control has-feedback-left'
         self.fields['data'].widget.attrs['class'] = 'form-control has-feedback-left'
         self.fields['data'].widget.attrs['id'] = 'datepicker'
-
-        # <div class="input-group date">
-        #           <div class="input-group-addon">
-        #             <i class="fa fa-calendar"></i>
-        #           </div>
-        #           <input type="text" class="form-control pull-right" id="datepicker">
-        #         </div>
+        self.fields['data'].widget.attrs['type'] = 'date'

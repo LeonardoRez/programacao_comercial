@@ -22,3 +22,14 @@ class FormularioCliente(forms.ModelForm):
         self.fields['telefone'].widget.attrs['data-mask'] = ""
         #OBSERVACAO
         self.fields['observacao'].widget.attrs['class'] = 'form-control'
+
+class FormularioAluguel(forms.ModelForm):
+    """
+    Formulario para o model Aluguel
+    """
+    class Meta:
+        model = Aluguel
+        exclude = []
+    def __init__(self,*args,**kwargs):
+        super(FormularioAluguel, self).__init__(*args,**kwargs)
+        

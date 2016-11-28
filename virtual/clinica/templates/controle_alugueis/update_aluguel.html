@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Atualizar aluguel teste</h1>
+    <form class="" action="" method="post">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit" name="button">Atualizar</button>
+    </form>
+{% endblock content %}

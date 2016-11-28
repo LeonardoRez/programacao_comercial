@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse_lazy
 from .models import *
@@ -41,4 +41,24 @@ class NovoAluguel(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         self.context = super(NovoAluguel, self).get_context_data(**kwargs)
         self.context['titulo'] = 'Novo aluguel'
+        return self.context
+
+    """
+    def clean(self):
+        super(NovoAluguel, self).clean()
+        hInicio = self.cleaned_data.get("horaInicio")
+        hTermino = self.cleaned_data.get("horaTermino")
+        if hInicio > hTermino:
+            self.add_error('horaInicio',"Hora de término não pode ser maior que de inicio")
+    """
+
+class UpdateAluguel(LoginRequiredMixin, UpdateView):
+    model = Aluguel
+    #fields = ['cliente']
+    form_class = FormUpdateAluguel
+    template_name = 'controle_alugueis/update_aluguel.html'
+    success_url = reverse_lazy('cadastrar-alugueis')
+    def get_context_data(self, **kwargs):
+        self.context = super(UpdateAluguel, self).get_context_data(**kwargs)
+        self.context['titulo'] = 'Update aluguel'
         return self.context

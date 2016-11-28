@@ -32,4 +32,8 @@ class FormularioAluguel(forms.ModelForm):
         exclude = []
     def __init__(self,*args,**kwargs):
         super(FormularioAluguel, self).__init__(*args,**kwargs)
-        
+
+class FormUpdateAluguel(forms.ModelForm):
+    class Meta:
+        model = Aluguel
+        exclude = []

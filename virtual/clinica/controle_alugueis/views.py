@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse_lazy
 from .models import *
@@ -18,6 +18,7 @@ class NovoCliente(LoginRequiredMixin, CreateView):
     """
     View para criação de novos clientes
     """
+    login_url='/'
     model = Cliente
     form_class = FormularioCliente
     template_name = 'controle_alugueis/novo_cliente.html'
@@ -33,6 +34,7 @@ class NovoAluguel(LoginRequiredMixin, CreateView):
     """
     View para criação de novos alugueis
     """
+    login_url='/'
     model = Aluguel
     form_class = FormularioAluguel
     template_name = 'controle_alugueis/novo_aluguel.html'
@@ -53,6 +55,7 @@ class NovoAluguel(LoginRequiredMixin, CreateView):
     """
 
 class UpdateAluguel(LoginRequiredMixin, UpdateView):
+    login_url='/'
     model = Aluguel
     #fields = ['cliente']
     form_class = FormUpdateAluguel
@@ -62,3 +65,17 @@ class UpdateAluguel(LoginRequiredMixin, UpdateView):
         self.context = super(UpdateAluguel, self).get_context_data(**kwargs)
         self.context['titulo'] = 'Update aluguel'
         return self.context
+
+class ListarAlugueis(LoginRequiredMixin, ListView):
+    login_url='/'
+    model = Aluguel
+    template_name = 'controle_alugueis/listar_alugueis.html'
+
+    def get_context_data(self, **kwargs):
+        self.context = super(ListarAlugueis, self).get_context_data(**kwargs)
+        self.context['titulo'] = 'Alugueis'
+        return self.context
+
+    def get_queryset(self):
+        queryset = Aluguel.objects.filter()
+        return queryset

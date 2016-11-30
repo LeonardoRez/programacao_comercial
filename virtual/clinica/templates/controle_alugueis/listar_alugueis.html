@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+      <table id="tabela-alugueis" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="alugueis_info">
+          <thead>
+              <tr role="row">
+                  <th>Cliente</th>
+                  <th>Valor</th>
+                  <th>Data</th>
+                  <th>Hora inicio</th>
+                  <th>Hora fim</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for aluguel in object_list %}
+                  <tr role="row">
+                      <td>{{aluguel.cliente}}</td>
+                      <td>R$ {{aluguel.valor}}</td>
+                      <td>{{aluguel.data}}</td>
+                      <td>{{aluguel.horaInicio}}</td>
+                      <td>{{aluguel.horaTermino}}</td>
+                  </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+{% endblock content %}

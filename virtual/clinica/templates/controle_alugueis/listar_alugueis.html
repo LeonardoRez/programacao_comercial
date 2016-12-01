@@ -14,7 +14,7 @@
           <tbody>
               {% for aluguel in object_list %}
                   <tr role="row">
-                      <td>{{aluguel.cliente}}</td>
+                      <td><a href="update/{{aluguel.id}}">{{aluguel.cliente}}</a></td>
                       <td>R$ {{aluguel.valor}}</td>
                       <td>{{aluguel.data}}</td>
                       <td>{{aluguel.horaInicio}}</td>

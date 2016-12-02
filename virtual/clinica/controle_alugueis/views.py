@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
-from django.views.generic import CreateView, UpdateView, ListView
+from django.views.generic import CreateView, UpdateView, ListView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse_lazy
 from .models import *
@@ -54,6 +54,16 @@ class UpdateCliente(LoginRequiredMixin, UpdateView):
         self.context['titulo'] = 'Atualizar cliente'
         return self.context
 
+class DeletarCliente(LoginRequiredMixin, DeleteView):
+    login_url = '/'
+    model = Cliente
+    form_class = FormularioCliente
+    success_url = reverse_lazy('listar-clientes')
+    template_name = 'controle_alugueis/deletar_cliente.html'
+    def get_context_data(self, **kwargs):
+        self.context = super(DeletarCliente, self).get_context_data(**kwargs)
+        self.context['titulo'] = 'Deletar cliente'
+        return self.context
 
 class NovoAluguel(LoginRequiredMixin, CreateView):
     """
@@ -63,7 +73,7 @@ class NovoAluguel(LoginRequiredMixin, CreateView):
     model = Aluguel
     form_class = FormularioAluguel
     template_name = 'controle_alugueis/novo_aluguel.html'
-    success_url = reverse_lazy('cadastrar-alugueis')
+    success_url = reverse_lazy('listar-alugueis')
 
     def get_context_data(self, **kwargs):
         self.context = super(NovoAluguel, self).get_context_data(**kwargs)
@@ -98,6 +108,7 @@ class ListarAlugueis(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         self.context = super(ListarAlugueis, self).get_context_data(**kwargs)
         self.context['titulo'] = 'Alugueis'
+        self.context['form'] = FormularioAluguel()
         return self.context
 
     def get_queryset(self):

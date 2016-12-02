@@ -1,26 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-      <table id="tabela-alugueis" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="alugueis_info">
-          <thead>
-              <tr role="row">
-                  <th>Cliente</th>
-                  <th>Valor</th>
-                  <th>Data</th>
-                  <th>Hora inicio</th>
-                  <th>Hora fim</th>
-              </tr>
-          </thead>
-          <tbody>
-              {% for aluguel in object_list %}
-                  <tr role="row">
-                      <td><a href="update/{{aluguel.id}}">{{aluguel.cliente}}</a></td>
-                      <td>R$ {{aluguel.valor}}</td>
-                      <td>{{aluguel.data}}</td>
-                      <td>{{aluguel.horaInicio}}</td>
-                      <td>{{aluguel.horaTermino}}</td>
-                  </tr>
-              {% endfor %}
-          </tbody>
-      </table>
+      <div class="box">
+                  <div class="box-header">
+                    <h3 class="box-title">Alugueis</h3>
+                  <!-- /.box-header -->
+                  <div class="box-body no-padding">
+                    <table class="table table-striped">
+                      <tbody><tr>
+                          <th>Cliente</th>
+                          <th>Valor</th>
+                          <th>Data</th>
+                          <th>Hora inicio</th>
+                          <th>Hora fim</th>
+                        <th style="width: 5%"></th>
+                      </tr>
+                      {% for aluguel in object_list %}
+                          <td><a href="update/{{aluguel.id}}">{{aluguel.cliente}}</a></td>
+                          <td>R$ {{aluguel.valor}}</td>
+                          <td>{{aluguel.data}}</td>
+                          <td>{{aluguel.horaInicio}}</td>
+                          <td>{{aluguel.horaTermino}}</td>
+                              <td><form class="" action="/alugueis/deletar/{{aluguel.id}}" method="post">{% csrf_token %}
+                              <button type="submit" class="btn btn-block btn-danger btn-xs">Deletar</button></form></td>
+                            </tr>
+                      {% endfor %}
+                    </tbody></table>
+                  </div>
+                  <!-- /.box-body -->
+                </div>
+              </div>
+              {% include 'controle_alugueis/form_novo_aluguel.html' %}
 {% endblock content %}

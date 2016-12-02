@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -59,4 +59,25 @@ class NovoGasto(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         self.context = super(NovoGasto, self).get_context_data(**kwargs)
         self.context['titulo'] = 'Adicionar Gasto'
+        return self.context
+class UpdateGasto(LoginRequiredMixin, UpdateView):
+    login_url = '/'
+    model = Gasto
+    form_class = FormularioGasto
+    template_name = 'controle_gastos/update_gasto.html'
+    success_url = reverse_lazy('listar-gastos')
+    def get_context_data(self, **kwargs):
+        self.context = super(UpdateGasto, self).get_context_data(**kwargs)
+        self.context['titulo'] = 'Atualizar gasto'
+        return self.context
+
+class DeletarGasto(LoginRequiredMixin, DeleteView):
+    login_url = '/'
+    model = Gasto
+    form_class = FormularioGasto
+    success_url = reverse_lazy('listar-gastos')
+    template_name = 'controle_gastos/deletar_gasto.html'
+    def get_context_data(self, **kwargs):
+        self.context = super(DeletarGasto, self).get_context_data(**kwargs)
+        self.context['titulo'] = 'Deletar gasto'
         return self.context

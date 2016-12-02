@@ -45,10 +45,12 @@
         <tbody>
             {% for gasto in object_list %}
                 <tr role="row">
-                    <td>{{gasto.get_tipo_gasto_display}}</td>
+                    <td><a href="update/{{gasto.id}}">{{gasto.get_tipo_gasto_display}}</a></td>
                     <td>{{gasto.descricao}}</td>
                     <td>R$ {{gasto.custo}}</td>
                     <td>{{gasto.data.day}}/{{gasto.data.month}}/{{gasto.data.year}}</td>
+                    <td><form class="" action="/gastos/deletar/{{gasto.id}}" method="post">{% csrf_token %}
+                    <button type="submit" class="btn btn-block btn-danger btn-xs">Deletar</button></form></td>
                 </tr>
             {% endfor %}
                 <tr>

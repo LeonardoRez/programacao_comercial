@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="box box-primary" width>
+            <div class="box-header with-border">
+              <h3 class="box-title">Deletar tarefa</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" action="" method="post">
+              {% csrf_token %}
+              <div class="box-body">
+                {% for campo in form %}
+                  <div class="form-group">
+                    {% if campo == form.done %}
+                      <label class="myLabel">Concluído {{ campo }} </label>
+                    {% else %}
+                      <label class="myLabel">{{ campo.label }}:</label>
+                          {{ campo }}
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="button" class="btn btn-block btn-danger">Deletar</button>
+              </div>
+            </form>
+          </div>
+{% endblock content %}

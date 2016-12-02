@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -37,4 +37,14 @@ class UpdateTarefa(LoginRequiredMixin, UpdateView):
     def get_context_data(self, **kwargs):
         self.context = super(UpdateTarefa, self).get_context_data(**kwargs)
         self.context['titulo'] = 'Atualizar tarefa'
+        return self.context
+class DeletarTarefa(LoginRequiredMixin, DeleteView):
+    login_url = '/'
+    model = Tarefa
+    form_class = FormularioTarefa
+    success_url = reverse_lazy('listar-tarefas')
+    template_name = 'tasks/deletar_tarefa.html'
+    def get_context_data(self, **kwargs):
+        self.context = super(DeletarTarefa, self).get_context_data(**kwargs)
+        self.context['titulo'] = 'Deletar tarefa'
         return self.context

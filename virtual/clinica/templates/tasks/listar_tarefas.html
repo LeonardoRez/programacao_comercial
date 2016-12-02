@@ -11,6 +11,7 @@
                   <!-- <th style="width: 10px">#</th> -->
                   <th>Tarefa</th>
                   <th>Tag</th>
+                  <th style="width: 5%"></th>
                 </tr>
                 {% for tarefa in object_list %}
                   {% if tarefa.done%}
@@ -29,6 +30,8 @@
                             {% elif tarefa.grau_importancia == 4 %}
                             <td><span class="badge bg-aqua"> </span></td>
                         {% endif %}
+                        <td><form class="" action="/tarefas/deletar/{{tarefa.id}}" method="post">{% csrf_token %}
+                        <button type="submit" class="btn btn-block btn-danger">Deletar</button></form></td>
                       </tr>
                 {% endfor %}
               </tbody></table>

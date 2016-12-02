@@ -14,3 +14,17 @@ class ListarTarefas(LoginRequiredMixin, ListView):
     model = Tarefa
     form_class = FormularioTarefa
     template_name = 'tasks/listar_tarefas.html'
+
+    def get_context_data(self, **kwargs):
+        self.context = super(ListarTarefas,self).get_context_data(**kwargs)
+        self.context['titulo'] = 'Tarefas'
+        return self.context
+
+    def get_queryset(self):
+        concluido = self.request.GET.get("concluido")
+        incompleto = self.request.GET.get("incompleto")
+        if concluido is None:
+            queryset = Tarefa.objects.all().order_by('-id')
+        else:
+            queryset = Tarefa.objects.all().order_by('id')
+        return queryset

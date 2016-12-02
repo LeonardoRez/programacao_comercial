@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Tarefas</h3>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <table class="table table-striped">
+                <tbody><tr>
+                  <!-- <th style="width: 10px">#</th> -->
+                  <th>Tarefa</th>
+                  <th style="width: 65%">Observação</th>
+                  <th style="width: 5%">Tag</th>
+                </tr>
+                {% for tarefa in object_list %}
+                  {% if tarefa.done%}
+                      <tr class="success">
+                  {% else %}
+                      <tr>
+                  {% endif %}
+                        <!-- <td>{{tarefa.id}}</td> -->
+                        <td><a href="update/{{tarefa.id}}">{{tarefa}}</a></td>
+                        <td>{{tarefa.observacao}}</td>
+                        {% if tarefa.grau_importancia == 1 %}
+                            <td><span class="badge bg-red"> </span></td>
+                            {% elif tarefa.grau_importancia == 2 %}
+                            <td><span class="badge bg-yellow"> </span></td>
+                            {% elif tarefa.grau_importancia == 3 %}
+                            <td><span class="badge bg-green"> </span></td>
+                            {% elif tarefa.grau_importancia == 4 %}
+                            <td><span class="badge bg-aqua"> </span></td>
+                        {% endif %}
+                      </tr>
+                {% endfor %}
+              </tbody></table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+
+
+
+{% endblock content%}

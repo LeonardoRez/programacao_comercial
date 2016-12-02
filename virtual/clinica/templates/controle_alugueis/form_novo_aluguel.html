@@ -1,5 +1,5 @@
 {% load staticfiles %}
-<form class="form-control" action="" method="post">
+<form class="form-control" action="/alugueis/novo/" method="post">
     {% csrf_token %}
     {{form}}
     <button type="submit" class="form-submit" name="button">Adicionar</button>

@@ -17,7 +17,7 @@ class NovoCliente(LoginRequiredMixin, CreateView):
     model = Cliente
     form_class = FormularioCliente
     template_name = 'controle_alugueis/novo_cliente.html'
-    success_url = reverse_lazy('cadastrar-clientes')
+    success_url = reverse_lazy('listar-clientes')
 
     def get_context_data(self, **kwargs):
         self.context = super(NovoCliente, self).get_context_data(**kwargs)

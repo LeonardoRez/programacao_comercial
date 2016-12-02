@@ -13,4 +13,4 @@ class ListarTarefas(LoginRequiredMixin, ListView):
     login_url='/'
     model = Tarefa
     form_class = FormularioTarefa
-    template_name = 'tasks/nova_task.p'
+    template_name = 'tasks/listar_tarefas.html'

@@ -271,6 +271,11 @@
 
 
     <!-- Main content -->
+    <div class="">
+      {% for tarefa in ultimas_tarefas %}
+          <span>{{tarefa}}</span>
+      {% endfor %}
+    </div>
     <section class="content">
         {% block content %}
         {% endblock %}

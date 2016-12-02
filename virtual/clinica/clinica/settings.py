@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'controle_gastos.apps.ControleGastosConfig',
     'autenticacao.apps.AutenticacaoConfig',
     'controle_alugueis.apps.ControleAlugueisConfig',
+    'tasks.apps.TasksConfig',
 ]
 
 MIDDLEWARE = [

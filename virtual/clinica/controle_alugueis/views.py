@@ -23,6 +23,35 @@ class NovoCliente(LoginRequiredMixin, CreateView):
         self.context = super(NovoCliente, self).get_context_data(**kwargs)
         self.context['titulo'] = 'Novo Cliente'
         return self.context
+class ListarClientes(LoginRequiredMixin, ListView):
+    """
+    View para listar os clientes cadastrados
+    """
+    login_url = '/'
+    model = Cliente
+    template_name = 'controle_alugueis/listar_clientes.html'
+
+    def get_context_data(self, **kwargs):
+        self.context = super(ListarClientes, self).get_context_data(**kwargs)
+        self.context['titulo'] = 'Clientes'
+        return self.context
+
+    def get_queryset(self):
+        queryset = Cliente.objects.filter()
+        return queryset
+class UpdateCliente(LoginRequiredMixin, UpdateView):
+    """
+    View para atualizar dados de um cliente
+    """
+    login_url='/'
+    model = Cliente
+    form_class = FormUpdateCliente
+    template_name = 'controle_alugueis/update_cliente.html'
+    success_url = reverse_lazy('listar-clientes')
+    def get_context_data(self, **kwargs):
+        self.context = super(UpdateCliente, self).get_context_data(**kwargs)
+        self.context['titulo'] = 'Atualizar cliente'
+        return self.context
 
 
 class NovoAluguel(LoginRequiredMixin, CreateView):

@@ -10,8 +10,7 @@
                 <tbody><tr>
                   <!-- <th style="width: 10px">#</th> -->
                   <th>Tarefa</th>
-                  <th style="width: 65%">Observação</th>
-                  <th style="width: 5%">Tag</th>
+                  <th>Tag</th>
                 </tr>
                 {% for tarefa in object_list %}
                   {% if tarefa.done%}
@@ -21,7 +20,6 @@
                   {% endif %}
                         <!-- <td>{{tarefa.id}}</td> -->
                         <td><a href="update/{{tarefa.id}}">{{tarefa}}</a></td>
-                        <td>{{tarefa.observacao}}</td>
                         {% if tarefa.grau_importancia == 1 %}
                             <td><span class="badge bg-red"> </span></td>
                             {% elif tarefa.grau_importancia == 2 %}

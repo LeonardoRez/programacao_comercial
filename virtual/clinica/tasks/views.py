@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -28,3 +28,13 @@ class ListarTarefas(LoginRequiredMixin, ListView):
         else:
             queryset = Tarefa.objects.all().order_by('id')
         return queryset
+class UpdateTarefa(LoginRequiredMixin, UpdateView):
+    login_url = '/'
+    model = Tarefa
+    form_class = FormularioTarefa
+    template_name = 'tasks/update_tarefa.html'
+    success_url = reverse_lazy('listar-tarefas')
+    def get_context_data(self, **kwargs):
+        self.context = super(UpdateTarefa, self).get_context_data(**kwargs)
+        self.context['titulo'] = 'Atualizar tarefa'
+        return self.context

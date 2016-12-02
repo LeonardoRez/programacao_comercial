@@ -13,12 +13,9 @@ class FormularioTarefa(forms.ModelForm):
     class Meta:
         model = Tarefa
         exclude = []
-    # widgets = {
-    #     'tipo_gasto': forms.Select(attrs={'class': 'form-control'}),
-    #     'custo': forms.NumberInput(attrs={'class': 'form-control has-feedback-left'}),
-    #     'descricao': forms.TextInput(attrs={'class': 'form-control has-feedback-left'}),
-    #     'data': forms.DateTimeInput(attrs={'class': 'form-control has-feedback-left'}),
-    # }
 # MUDAR CSS
     def __init__(self, *args, **kwargs):
         super(FormularioTarefa, self).__init__(*args, **kwargs)
+        self.fields['texto'].widget.attrs['class'] = 'form-control'
+        self.fields['done'].widget.attrs['class'] = 'has-feedback-left checkbox'
+        self.fields['grau_importancia'].widget.attrs['class'] = 'form-control has-feedback-left'

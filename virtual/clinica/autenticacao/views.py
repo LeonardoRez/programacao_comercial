@@ -37,10 +37,6 @@ class Logout(LoginRequiredMixin,View):
         return redirect('login')
 
 
-# def login(request):
-#     # return HttpRespéonse("Tela de login")
-#     # template = loader.get_template('autenticacao/index.html')
-#     return render(request, 'autenticacao/login.html', {})
 class Index(LoginRequiredMixin,View):
     login_url='/'
     def get(self,request):

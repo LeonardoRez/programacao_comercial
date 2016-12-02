@@ -79,7 +79,6 @@ WSGI_APPLICATION = 'clinica.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
     'default': {

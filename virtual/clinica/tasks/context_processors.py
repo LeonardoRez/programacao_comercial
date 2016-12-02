@@ -3,7 +3,6 @@ from .models import Tarefa
 
 
 def ultimas_tasks(request):
-    #ultimas_tarefas = Tarefa.objects.filter().order_by('grau_importancia', 'id')[:5]
     contexto = {}
     contexto['ultimas_tarefas'] = Tarefa.objects.filter(done = False).order_by('grau_importancia','id')[:5]
     contexto['quant_total'] = len(Tarefa.objects.filter(done = False))

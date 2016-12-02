@@ -82,7 +82,6 @@ class NovoAluguel(LoginRequiredMixin, CreateView):
 class UpdateAluguel(LoginRequiredMixin, UpdateView):
     login_url='/'
     model = Aluguel
-    #fields = ['cliente']
     form_class = FormUpdateAluguel
     template_name = 'controle_alugueis/update_aluguel.html'
     success_url = reverse_lazy('cadastrar-alugueis')

@@ -8,7 +8,6 @@
             <div class="box-body no-padding">
               <table class="table table-striped">
                 <tbody><tr>
-                  <!-- <th style="width: 10px">#</th> -->
                   <th>Tarefa</th>
                   <th>Tag</th>
                   <th style="width: 5%"></th>
@@ -19,7 +18,6 @@
                   {% else %}
                       <tr>
                   {% endif %}
-                        <!-- <td>{{tarefa.id}}</td> -->
                         <td><a href="update/{{tarefa.id}}">{{tarefa}}</a></td>
                         {% if tarefa.grau_importancia == 1 %}
                             <td><span class="badge bg-red"> </span></td>

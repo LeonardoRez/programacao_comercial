@@ -34,6 +34,7 @@ class ListarClientes(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         self.context = super(ListarClientes, self).get_context_data(**kwargs)
         self.context['titulo'] = 'Clientes'
+        self.context['form'] = FormularioCliente()
         return self.context
 
     def get_queryset(self):

@@ -2,5 +2,67 @@
 {% load staticfiles %}
 
 {% block content %}
-<h1>INDEX</h1>
+<h1>Bem vindo</h1>
+<div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="fa fa-check-square-o"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Tarefas</span>
+              <span class="info-box-number">{{quant_total}} pendentes</small></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-money"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Gastos</span>
+              <span class="info-box-number">R${{gasto_mes}} esse mês</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fa fa-calendar-check-o"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Alugueis</span>
+              <span class="info-box-number">R${{arrecadado_mes}} esse mês</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Clientes</span>
+              <span class="info-box-number">{{quant_clientes}} cadastrados</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+
+
+
+
 {% endblock content %}

@@ -68,6 +68,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'tasks.context_processors.ultimas_tasks',
+                'controle_gastos.context_processors.total_gasto',
+                'controle_alugueis.context_processors.total_arrecadado',
             ],
         },
     },

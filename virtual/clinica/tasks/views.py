@@ -38,6 +38,16 @@ class UpdateTarefa(LoginRequiredMixin, UpdateView):
         self.context = super(UpdateTarefa, self).get_context_data(**kwargs)
         self.context['titulo'] = 'Atualizar tarefa'
         return self.context
+class NovaTarefa(LoginRequiredMixin, CreateView):
+    login_url = '/'
+    model = Tarefa
+    form_class = FormularioTarefa
+    template_name = 'tasks/nova_tarefa.html'
+    success_url = reverse_lazy('listar-tarefas')
+    def get_context_data(self, **kwargs):
+        self.context = super(NovaTarefa, self).get_context_data(**kwargs)
+        self.context['titulo'] = 'Nova tarefa'
+        return self.context
 class DeletarTarefa(LoginRequiredMixin, DeleteView):
     login_url = '/'
     model = Tarefa

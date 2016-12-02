@@ -1,6 +1,36 @@
+
 {% load staticfiles %}
-<form class="form-control" action="/alugueis/novo/" method="post">
-    {% csrf_token %}
-    {{form}}
-    <button type="submit" class="form-submit" name="button">Adicionar</button>
-</form>
+
+<div class="box box-primary" width>
+        <div class="box-header with-border">
+          <h3 class="box-title">Novo aluguel</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form role="form" action="/alugueis/clientes/novo/" method="post">
+          {% csrf_token %}
+          <div class="box-body">
+            {% for campo in form %}
+                {% if campo.errors%}
+                <div class="form-group has-error">
+                    <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {{campo.label}}:</label>
+                    {{campo}}
+                    <span class="help-block">{{campo.errors}}</span>
+                </div>
+
+                {% else %}
+                  <div class="form-group">
+                      <label class="myLabel">{{ campo.label }}:</label>
+                          {{ campo }}
+                  </div>
+                {% endif %}
+            {% endfor %}
+          <!-- /.box-body -->
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+        </form>
+      </div>
+<script >
+
+</script>

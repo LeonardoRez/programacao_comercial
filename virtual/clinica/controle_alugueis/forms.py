@@ -32,6 +32,12 @@ class FormularioAluguel(forms.ModelForm):
         exclude = []
     def __init__(self,*args,**kwargs):
         super(FormularioAluguel, self).__init__(*args,**kwargs)
+        self.fields['cliente'].widget.attrs['class'] = 'form-control'
+        self.fields['valor'].widget.attrs['class'] = 'form-control '
+        self.fields['data'].widget.attrs['class'] = 'form-control'
+        self.fields['data'].widget.attrs['id'] = 'datepicker'
+        self.fields['horaInicio'].widget.attrs['class'] = 'form-control'
+        self.fields['horaTermino'].widget.attrs['class'] = 'form-control'
 
 class FormUpdateAluguel(forms.ModelForm):
     class Meta:

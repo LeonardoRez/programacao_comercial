@@ -24,17 +24,26 @@ class Gastos(LoginRequiredMixin, ListView):
         self.context['titulo'] = 'Lista de Gastos'
         self.context['custo_total'] = self.get_queryset().aggregate(Sum('custo')).get('custo__sum')
         self.context['meses'] = MESES
+        self.context['tipos_gasto'] = TIPO_GASTO
 
         self.context['mes']  = int(self.request.GET.get("mes", 0))
+        self.context['tipo_gasto']  = int(self.request.GET.get("tipo_gasto", 0))
+
         self.context['form'] = FormularioGasto()
         return self.context
 
     def get_queryset(self):
         mes = self.request.GET.get("mes") # LISTAR GASTOS POR MES. FALTA CRIAR UM SELECT PARA MANDAR O VALOR PARA ESSE 'mes'
+        tipo_gasto  = self.request.GET.get("tipo_gasto")
         if (mes is None) or (mes == "0"):
-            queryset = Gasto.objects.filter()
-        else:
+            if (tipo_gasto is None) or (tipo_gasto == "0"):
+                queryset = Gasto.objects.filter()
+            else:
+                queryset = Gasto.objects.filter(tipo_gasto= tipo_gasto)
+        elif (tipo_gasto is None) or (tipo_gasto == "0"):
             queryset = Gasto.objects.filter(data__month = mes)
+        else:
+            queryset = Gasto.objects.filter(tipo_gasto= tipo_gasto,data__month = mes)
         return queryset
 
 

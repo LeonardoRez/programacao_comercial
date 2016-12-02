@@ -4,14 +4,32 @@
     <h1>GASTOS</h1>
 
     <div class="">
-        <form class="" action="" method="get">
-            <select class="" name="mes" onchange="this.form.submit()">
+        <form class="" action="/gastos/" method="get">
+          <div class="row">
+            <div class="col-md-1">
+                <label class="myLabel" style="margin-top:5px; margin-left:9px" for="">Filtros:</label>
+            </div>
+              <div class="col-md-5">
+
+            <select class="form-control" name="mes" onchange="this.form.submit()">
+
                 <option value="0">Escolha um mês</option>
                 {% for key, value in meses %}  <!-- v in meses v = (1, "")-->
                         {{campo_mes}}
                         <option {% if key == mes %} selected {% endif %} value="{{key}}">{{value}}</option>
                 {% endfor %}
             </select>
+          </div>
+          <div class="col-md-5">
+            <select class="form-control" name="tipo_gasto" onchange="this.form.submit()">
+                <option value="0">Escolha um tipo de gasto</option>
+                {% for key, value in tipos_gasto %}  <!-- v in meses v = (1, "")-->
+                        <option {% if key == tipo_gasto %} selected {% endif %} value="{{key}}">{{value}}</option>
+                {% endfor %}
+            </select>
+          </div>
+
+          </div>
         </form>
     </div>
 
@@ -45,7 +63,6 @@
       <h3>Adicionar novo gasto</h3>
       {% include "controle_gastos/form_novo_gasto.html" %}
     </div>
-
 
 
 

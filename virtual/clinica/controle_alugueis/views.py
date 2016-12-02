@@ -9,11 +9,6 @@ from .forms import *
 
 
 
-
-
-
-
-
 class NovoCliente(LoginRequiredMixin, CreateView):
     """
     View para criação de novos clientes
